@@ -1,0 +1,4 @@
+My goal is to <insert goal>. We will engage in a conversation in which you first, using questions (from you) and answers (from me), help me hone in on a reasonable version of that goal.
+We will then, using the same Q&A format, break the goal down into reasonable chunks that aren't too daunting.
+
+This article is an example of how Mitchell Hashimoto breaks down a large technical project: https://mitchellh.com/writing/building-large-technical-projects.

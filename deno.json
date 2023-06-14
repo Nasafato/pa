@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "run": "deno run --allow-read=./files --allow-write=./files --allow-run init.ts"
+  }
+}
