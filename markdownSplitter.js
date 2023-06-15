@@ -1,19 +1,11 @@
-import type { Node } from "https://esm.sh/@types/unist/index.d.ts";
 import { unified } from "npm:unified@10.1.2";
-import { join } from "https://deno.land/std/path/mod.ts";
-import { VFile } from "npm:vfile@5.3.7";
 import remarkParse from "https://esm.sh/remark-parse@10.0.2";
 
-export async function splitMarkdownIntoChunks(markdown: string) {
+export function splitMarkdownIntoChunks(markdown) {
   const ast = unified().use(remarkParse).parse(markdown);
-  //   console.log(ast);
-  //   console.log(markdown);
-  //   const tree = remarkParse(markdown);
-  const chunks: string[] = [];
-  // The current chunk we're building
-  let currentChunk: string[] = [];
+  const chunks = [];
+  let currentChunk = [];
 
-  // A helper function to handle finishing a chunk
   const finishChunk = () => {
     if (currentChunk.length > 0) {
       chunks.push(currentChunk.join("\n"));
@@ -21,7 +13,7 @@ export async function splitMarkdownIntoChunks(markdown: string) {
     }
   };
 
-  const visitList = (node: Node, accumulator: string[]) => {
+  const visitList = (node, accumulator) => {
     switch (node.type) {
       case "list":
       case "paragraph":
@@ -36,7 +28,7 @@ export async function splitMarkdownIntoChunks(markdown: string) {
     }
   };
 
-  const visit = (node: Node) => {
+  const visit = (node) => {
     switch (node.type) {
       case "root": {
         node.children.forEach(visit);
@@ -59,7 +51,7 @@ export async function splitMarkdownIntoChunks(markdown: string) {
         break;
       case "list": {
         finishChunk();
-        const accumulator: string[] = [];
+        const accumulator = [];
         visitList(node, accumulator);
         currentChunk.push(accumulator.map((line) => `- ${line}`).join("\n"));
         break;
