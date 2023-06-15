@@ -1,0 +1,5 @@
+- my wrists and elbows can't handle the table. Need to do this gradually
+- reverse bear: pretty hard on the wrists
+- Supine shoulder extension stretch: definitely can't tough fingertips together, definitely feel it in ulnar side of elbow
+- Same with supine shoulder extension rocks
+- Seal stretch: definitely feel it in lumbar spine, posterior pelvic tilt causes stretch in abs

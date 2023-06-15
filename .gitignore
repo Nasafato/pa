@@ -1,0 +1,16 @@
+# Deno
+.cache
+*.log
+
+# Visual Studio Code
+.vscode
+*.code-workspace
+
+# Node.js
+node_modules
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db

@@ -1,0 +1,39 @@
+export const snapshot = {};
+
+snapshot[`paragraph.md 1`] = `
+[
+  "asdfasdf#asdfasdf#asdfasdf# Tuesday",
+  "Kettlebell/conditioning day
+" +
+    "Morning
+" +
+    "What's a runner's warmup? Maybe just the Gymnastic bodies warmup
+" +
+    "2 laps around the park",
+]
+`;
+
+snapshot[`list.md 1`] = `
+[
+  "Another one",
+  "- Item A
+- Item B
+- Item C
+- Item D
+- Item E",
+]
+`;
+
+snapshot[`list2.md 1`] = `
+[
+  "- my wrists and elbows can't handle the table. Need to do this gradually
+" +
+    "- reverse bear: pretty hard on the wrists
+" +
+    "- Supine shoulder extension stretch: definitely can't tough fingertips together, definitely feel it in ulnar side of elbow
+" +
+    "- Same with supine shoulder extension rocks
+" +
+    "- Seal stretch: definitely feel it in lumbar spine, posterior pelvic tilt causes stretch in abs",
+]
+`;
