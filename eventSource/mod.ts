@@ -1,11 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.191.0/testing/asserts.ts";
 import { z } from "https://deno.land/x/zod@v3.21.4/mod.ts";
-import {
-  consumeNewlines,
-  consumeEvents,
-  EventInfo,
-} from "./eventSourceHelpers.ts";
-type Handler = (data: string) => void;
+import { consumeNewlines, consumeEvents, EventInfo } from "./helpers.ts";
 
 enum ReadyState {
   CONNECTING = 0,
