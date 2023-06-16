@@ -49,3 +49,26 @@ export function consumeEvents(buffer: string[]): {
     buffer: remainingBuffer,
   };
 }
+
+export function parseEvent(eventInfo: EventInfo) {
+  const { lines } = eventInfo;
+  let name = "";
+  const data = [];
+  for (const line of lines) {
+    if (line.startsWith("event:")) {
+      name = line.slice(6).trim();
+    } else if (line.startsWith("data:")) {
+      data.push(line.slice(5).trim());
+    } else if (line.startsWith(":")) {
+      // Ignore.
+    }
+  }
+
+  if (!name) {
+    name = "message";
+  }
+  return {
+    name,
+    data: data.join("\n"),
+  };
+}

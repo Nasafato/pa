@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.191.0/testing/asserts.ts";
+import { assertEquals } from "../../deps.ts";
 import { EventSource } from "../mod.ts";
 
 Deno.test("Event parsing", async (t) => {

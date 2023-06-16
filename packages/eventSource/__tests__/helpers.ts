@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.191.0/testing/asserts.ts";
+import { assertEquals } from "../../deps.ts";
 import { consumeEvents, consumeNewlines } from "../helpers.ts";
 
 Deno.test("consumeNewlines", async (t) => {

@@ -1,6 +1,6 @@
-import { join } from "https://deno.land/std@0.191.0/path/mod.ts";
-import { splitMarkdownIntoChunks } from "./markdownSplitter.js";
-import { assertSnapshot } from "https://deno.land/std@0.191.0/testing/snapshot.ts";
+import { join } from "../../deps.ts";
+import { splitMarkdownIntoChunks } from "../mod.js";
+import { assertSnapshot } from "../../deps.ts";
 
 const __dirname = new URL(".", import.meta.url).pathname;
 

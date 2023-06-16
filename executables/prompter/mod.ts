@@ -1,4 +1,4 @@
-import { config } from "./config.ts";
+import { config } from "../../config.ts";
 
 const buffer = new Uint8Array(1024);
 

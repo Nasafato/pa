@@ -1,0 +1,44 @@
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"role":"assistant"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"To"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" master"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" a"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" new"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" language"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":","},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" start"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" with"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" basics"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" and"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" syntax"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"\n"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":"Practice"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" and"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" persistence"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" will"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" surely"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" bring"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content":" success"},"index":0,"finish_reason":null}]}
+
+data: {"id":"chatcmpl-7S8JV650aA4qbRP6SpSYw0eJ6KJkC","object":"chat.completion.chunk","created":1686939497,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{},"index":0,"finish_reason":"stop"}]}
+
+data: [DONE]
+

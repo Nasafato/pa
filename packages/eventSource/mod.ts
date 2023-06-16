@@ -1,6 +1,11 @@
 import { assertEquals } from "https://deno.land/std@0.191.0/testing/asserts.ts";
 import { z } from "https://deno.land/x/zod@v3.21.4/mod.ts";
-import { consumeNewlines, consumeEvents, EventInfo } from "./helpers.ts";
+import {
+  consumeNewlines,
+  consumeEvents,
+  EventInfo,
+  parseEvent,
+} from "./helpers.ts";
 
 enum ReadyState {
   CONNECTING = 0,
@@ -99,23 +104,8 @@ export class EventSource extends EventTarget {
   }
 
   #parseEvent(eventInfo: EventInfo) {
-    const { lines } = eventInfo;
-    let name = "";
-    const data = [];
-    for (const line of lines) {
-      if (line.startsWith("event:")) {
-        name = line.slice(6).trim();
-      } else if (line.startsWith("data:")) {
-        data.push(line.slice(5).trim());
-      } else if (line.startsWith(":")) {
-        // Ignore.
-      }
-    }
-
-    if (!name) {
-      name = "message";
-    }
-
+    const parsedEvent = parseEvent(eventInfo);
+    const { name, data } = parsedEvent;
     let event;
     if (name === "message" || (name !== "error" && name !== "open")) {
       event = new MessageEvent(name, { data: data.join("\n") });

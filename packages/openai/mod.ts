@@ -1,22 +1,11 @@
+import { z } from "../deps.ts";
+import {
+  consumeEvents,
+  consumeNewlines,
+  parseEvent,
+} from "../eventSource/helpers.ts";
+
 export const API_URL = "https://api.openai.com/v1";
-// import { OpenAIApi, Configuration } from "npm:openai@3.3.0";
-
-// const apiKey = Deno.env.get("OPENAI_API_KEY");
-// if (!apiKey) {
-//   throw new Error("OPENAI_API_KEY is not set");
-// }
-// const configuration = new Configuration({
-//   apiKey,
-// });
-
-// const openai = new OpenAIApi(configuration);
-// const chatCompletion = await openai.createChatCompletion({
-//   model: "gpt-3.5-turbo",
-//   messages: [{ role: "user", content: "Hello world" }],
-// });
-// console.log(chatCompletion.data.choices[0].message);
-
-// export async function query(question: string) {}
 
 export class Configuration {
   apiKey: string;
@@ -49,9 +38,6 @@ export class OpenAIApi {
     }
 
     return response;
-
-    // const body = await readAll(response.body);
-    // console.log(decoder.decode(body));
   }
 
   async request(path: string, body: any) {
@@ -66,5 +52,51 @@ export class OpenAIApi {
     });
 
     return response;
+  }
+}
+
+export const choiceSchema = z.object({
+  delta: z.object({
+    role: z.string().optional(),
+    content: z.string().optional(),
+  }),
+  index: z.number(),
+  finish_reason: z.string().nullable(),
+});
+
+export const dataSchema = z.object({
+  id: z.string(),
+  object: z.string(),
+  created: z.number(),
+  model: z.string(),
+  choices: z.array(choiceSchema),
+});
+
+export async function streamBody(body: ReadableStream<Uint8Array>) {
+  const decoder = new TextDecoder();
+  let chunkBuffer = "";
+  let eventBuffer = [] as string[];
+
+  for await (const chunk of body) {
+    chunkBuffer += decoder.decode(chunk);
+    const { buffer, lines } = consumeNewlines(chunkBuffer);
+    chunkBuffer = buffer;
+    eventBuffer.push(...lines);
+
+    const { events, buffer: remainingBuffer } = consumeEvents(eventBuffer);
+    eventBuffer = remainingBuffer;
+    for (const eventInfo of events) {
+      const event = parseEvent(eventInfo);
+      if (event.data === "[DONE]") {
+        console.log("[DONE]");
+        break;
+      }
+      const data = dataSchema.safeParse(JSON.parse(event.data));
+      if (!data.success) {
+        console.log("data.error", data.error);
+        continue;
+      }
+      console.log(data.data.choices[0].delta.content);
+    }
   }
 }
