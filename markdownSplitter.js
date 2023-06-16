@@ -38,11 +38,18 @@ export function splitMarkdownIntoChunks(markdown) {
         finishChunk();
         // console.log(node.children);
         const depth = node.depth;
-        const heading = Array(depth).fill("asdfasdf#").join("");
+        const heading = Array(depth).fill("#").join("");
         const chunk = [heading, " ", ...node.children.map((c) => c.value)].join(
           ""
         );
         currentChunk.push(chunk);
+        break;
+      }
+      case "link": {
+        finishChunk();
+        const accumulator = [];
+        visitLink(node, accumulator);
+        currentChunk.push(accumulator.join(" "));
         break;
       }
       case "code":
@@ -73,6 +80,17 @@ export function splitMarkdownIntoChunks(markdown) {
         }
         break;
       }
+    }
+  };
+
+  const visitLink = (node, accumulator) => {
+    switch (node.type) {
+      case "link":
+        node.children.forEach((c) => visitLink(c, accumulator));
+        accumulator.push(node.url);
+        break;
+      case "text":
+        accumulator.push(node.value);
     }
   };
 

@@ -1,5 +1,7 @@
 {
   "tasks": {
-    "run": "deno run --allow-read=./files --allow-write=./files --allow-run init.ts"
+    "run": "deno run --allow-read=./files --allow-write=./files --allow-run init.ts",
+    "test": "deno test --allow-all --no-check",
+    "test:update": "deno test --allow-all --no-check -- --update"
   }
 }
