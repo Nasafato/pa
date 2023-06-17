@@ -10,7 +10,7 @@ compile:
 	deno compile $(PERMISSION_FLAGS) main.ts
 
 install_local:
-	# deno install $(PERMISSION_FLAGS) $(LOCAL_IMPORT_MAP) main.ts
+	deno install $(PERMISSION_FLAGS) $(LOCAL_IMPORT_MAP) main.ts
 	deno install -n h $(PERMISSION_FLAGS) $(LOCAL_IMPORT_MAP) main.ts
 
 install_local_force:
