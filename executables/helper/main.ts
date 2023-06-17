@@ -11,7 +11,6 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-console.log("args", Deno.args);
 const query = Deno.args.join(" ");
 
 if (query.length === 0) {
