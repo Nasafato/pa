@@ -10,9 +10,11 @@ let bpeFileUrl;
 if (url.protocol === "file:") {
   encoderJsonUrl = join(dirname(url.pathname), "./encoder.json");
   bpeFileUrl = join(dirname(url.pathname), "./vocab.bpe");
+} else if (url.protocol === "http:" || url.protocol === "https:") {
+  encoderJsonUrl = new URL("./encoder.json", url).href;
+  bpeFileUrl = new URL("./vocab.bpe", url).href;
 } else {
-  encoderJsonUrl = "";
-  bpeFileUrl = "";
+  throw new Error(`Unknown protocol ${url.protocol}`);
 }
 
 const encoder = JSON.parse(await Deno.readTextFile(encoderJsonUrl));

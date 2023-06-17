@@ -11,16 +11,7 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-
-// const content = await Deno.readTextFile(
-// join(__dirname, "../../files/notes/Workout Log.md")
-// join(__dirname, "../../files/notes/one-week-log.md")
-// );
-
 const query = Deno.args.join(" ");
-
-// const output = encode(content);
-// console.log(`Estimated tokens: ${output.length}`);
 
 if (query.length === 0) {
   throw new Error("Query is empty");

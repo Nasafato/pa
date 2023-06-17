@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "path": "https://deno.land/std@0.191.0/path/mod.ts",
+    "dotenv": "https://deno.land/std@0.192.0/dotenv/mod.ts",
+    "openai": "https://raw.githubusercontent.com/Nasafato/pa/master/libraries/openai/mod.ts",
+    "eventSource": "https://raw.githubusercontent.com/Nasafato/pa/master/libraries/eventSource/mod.ts",
+    "eventSource/": "https://raw.githubusercontent.com/Nasafato/pa/master/libraries/eventSource/"
+  }
+}
