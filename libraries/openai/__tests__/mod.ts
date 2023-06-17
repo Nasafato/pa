@@ -1,18 +1,14 @@
-import { assertEquals } from "https://deno.land/std@0.191.0/testing/asserts.ts";
+import { readUrltoText, assertEquals } from "../devDeps.ts";
 import {
+  readableStreamFromIterable,
   consumeEvents,
   consumeNewlines,
   parseEvent,
-} from "../../eventSource/helpers.ts";
-import { readUrltoText } from "../../utils/mod.ts";
-import { readableStreamFromIterable } from "../deps.ts";
+} from "../deps.ts";
 import { dataSchema } from "../mod.ts";
 
 const completionTxtUrl = new URL("./fullCompletion.txt", import.meta.url);
-console.log(completionTxtUrl);
 const fullFixture = await readUrltoText(completionTxtUrl);
-// const __dirname = new URL(".", import.meta.url).pathname;
-// const fullFixture = await Deno.readTextFile(`${__dirname}/fullCompletion.txt`);
 
 function chunkString(s: string) {
   const chunkSize = 100;

@@ -6,18 +6,20 @@ await load({
   export: true,
 });
 
-const configuration = new Configuration({
-  apiKey: Deno.env.get("OPENAI_API_KEY") || "",
-});
+if (import.meta.main) {
+  const configuration = new Configuration({
+    apiKey: Deno.env.get("OPENAI_API_KEY") || "",
+  });
 
-const openai = new OpenAIApi(configuration);
-const query = Deno.args.join(" ");
+  const openai = new OpenAIApi(configuration);
+  const query = Deno.args.join(" ");
 
-if (query.length === 0) {
-  throw new Error("Query is empty");
+  if (query.length === 0) {
+    throw new Error("Query is empty");
+  }
+
+  await generateCompletion(
+    openai,
+    `Act as a highly knowledgeable individual. Answer the following query, while being concise, thorough, and helpful: ${query}`
+  );
 }
-
-await generateCompletion(
-  openai,
-  `Act as a highly knowledgeable individual. Answer the following query, while being concise, thorough, and helpful: ${query}`
-);
