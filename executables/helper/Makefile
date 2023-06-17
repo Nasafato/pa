@@ -21,6 +21,9 @@ install_local_force:
 install_remote:
 	deno install $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) -r -n rh $(REMOTE_MAIN)
 
+install_remote_force:
+	deno install --force $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) -r -n rh $(REMOTE_MAIN)
+
 run_remote:
 	deno run $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) $(REMOTE_MAIN) $(ARGS)
 
