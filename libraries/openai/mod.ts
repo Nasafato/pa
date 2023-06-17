@@ -1,6 +1,6 @@
 import { join } from "../deps.ts";
 import { OpenAIApi, streamBody, dataSchema } from "./OpenAiApi.ts";
-import { encode, decode } from "./encoder.js";
+import { encode, decode } from "./encoder.ts";
 import { Configuration } from "./Configuration.ts";
 
 const __dirname = new URL(".", import.meta.url).pathname;

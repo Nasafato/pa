@@ -1,24 +1,55 @@
 // Pulled from https://github.com/latitudegames/GPT-3-Encoder/blob/master/Encoder.js
 // and slightly modified for Deno.
-import { dirname, join } from "../deps.ts";
-
-console.log(import.meta.url);
-const url = new URL(import.meta.url);
-console.log("url", url);
+// const url = new URL(import.meta.url);
+const url = new URL(
+  "https://raw.githubusercontent.com/Nasafato/pa/master/libraries/openai/encoder.json"
+);
 let encoderJsonUrl;
 let bpeFileUrl;
 if (url.protocol === "file:") {
-  encoderJsonUrl = join(dirname(url.pathname), "./encoder.json");
-  bpeFileUrl = join(dirname(url.pathname), "./vocab.bpe");
+  encoderJsonUrl = new URL("./encoder.json", url);
+  bpeFileUrl = new URL("./vocab.bpe", url);
 } else if (url.protocol === "http:" || url.protocol === "https:") {
-  encoderJsonUrl = new URL("./encoder.json", url).href;
-  bpeFileUrl = new URL("./vocab.bpe", url).href;
+  encoderJsonUrl = new URL("./encoder.json", url);
+  bpeFileUrl = new URL("./vocab.bpe", url);
 } else {
   throw new Error(`Unknown protocol ${url.protocol}`);
 }
 
-const encoder = JSON.parse(await Deno.readTextFile(encoderJsonUrl));
-const bpe_file = await Deno.readTextFile(bpeFileUrl, "utf-8");
+console.log("encoderJsonUrl", encoderJsonUrl);
+console.log("bpeFileUrl", bpeFileUrl);
+
+async function fetchReadableStream(url: string | URL) {
+  const res = await fetch(url);
+  if (!res.body) {
+    throw new Error("Failed to fetch");
+  }
+  return res.body;
+}
+
+let encoderJsonFile: ReadableStream<Uint8Array>;
+let bpeFile;
+if (url.protocol === "file:") {
+  encoderJsonFile = (await Deno.open(encoderJsonUrl)).readable;
+  bpeFile = (await Deno.open(bpeFileUrl)).readable;
+} else {
+  encoderJsonFile = await fetchReadableStream(encoderJsonUrl);
+  bpeFile = await fetchReadableStream(bpeFileUrl);
+}
+
+const textDecoder = new TextDecoder("utf-8");
+async function readAll(file: ReadableStream<Uint8Array>) {
+  const chunks = [];
+  for await (const chunk of file) {
+    chunks.push(textDecoder.decode(chunk));
+  }
+  return chunks.join("");
+}
+
+const encoder = JSON.parse(await readAll(encoderJsonFile));
+// const encoder = JSON.parse(await Deno.readTextFile(encoderJsonUrl));
+const bpe_file = await readAll(bpeFile);
+// const bpe_file = await Deno.readTextFile(bpeFileUrl, "utf-8");
 
 const range = (x, y) => {
   const res = Array.from(Array(y).keys()).slice(x);
@@ -33,12 +64,11 @@ const chr = (x) => {
   return String.fromCharCode(x);
 };
 
-const textEncoder = new TextEncoder("utf-8");
+const textEncoder = new TextEncoder();
 const encodeStr = (str) => {
   return Array.from(textEncoder.encode(str)).map((x) => x.toString());
 };
 
-const textDecoder = new TextDecoder("utf-8");
 const decodeStr = (arr) => {
   return textDecoder.decode(new Uint8Array(arr));
 };
