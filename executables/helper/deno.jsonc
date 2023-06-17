@@ -1,9 +1,9 @@
 {
   "importMap": "import_map.local.json",
   "tasks": {
-    "run": "deno run --allow-net --allow-read --allow-env --allow-write  main.ts",
-    "compile": "deno compile --allow-net --allow-read --allow-env --allow-write main.ts",
-    "install:local": "deno install --allow-net --allow-read --allow-env --allow-write --import-map import_map.local.json main.ts",
-    "install:local:force": "deno task install:local --force"
+    "run": "make run",
+    "compile": "make compile",
+    "install:local": "make install_local",
+    "install:local:force": "make install_local_force"
   }
 }
