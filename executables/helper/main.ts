@@ -1,6 +1,5 @@
-import { load } from "https://deno.land/std@0.192.0/dotenv/mod.ts";
-import { join } from "../../packages/deps.ts";
-import { Configuration, OpenAIApi, encode } from "../../packages/openai/mod.ts";
+import { load } from "dotenv";
+import { Configuration, OpenAIApi, encode } from "openai";
 import { generateCompletion } from "./completion.ts";
 
 await load({

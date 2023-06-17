@@ -1,10 +1,6 @@
 import { Configuration } from "./Configuration.ts";
-import {
-  consumeEvents,
-  consumeNewlines,
-  parseEvent,
-} from "../eventSource/helpers.ts";
-import { z } from "../deps.ts";
+
+import { z, parseEvent, consumeEvents, consumeNewlines } from "./deps.ts";
 
 export const API_URL = "https://api.openai.com/v1";
 

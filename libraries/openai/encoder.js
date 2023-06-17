@@ -1,15 +1,22 @@
 // Pulled from https://github.com/latitudegames/GPT-3-Encoder/blob/master/Encoder.js
 // and slightly modified for Deno.
-import { join, dirname, fromFileUrl } from "../deps.ts";
+import { dirname, join } from "../deps.ts";
 
-const __dirname = dirname(fromFileUrl(import.meta.url));
-const encoder = JSON.parse(
-  await Deno.readTextFile(join(__dirname, "./encoder.json"))
-);
-const bpe_file = await Deno.readTextFile(
-  join(__dirname, "./vocab.bpe"),
-  "utf-8"
-);
+console.log(import.meta.url);
+const url = new URL(import.meta.url);
+console.log("url", url);
+let encoderJsonUrl;
+let bpeFileUrl;
+if (url.protocol === "file:") {
+  encoderJsonUrl = join(dirname(url.pathname), "./encoder.json");
+  bpeFileUrl = join(dirname(url.pathname), "./vocab.bpe");
+} else {
+  encoderJsonUrl = "";
+  bpeFileUrl = "";
+}
+
+const encoder = JSON.parse(await Deno.readTextFile(encoderJsonUrl));
+const bpe_file = await Deno.readTextFile(bpeFileUrl, "utf-8");
 
 const range = (x, y) => {
   const res = Array.from(Array(y).keys()).slice(x);
@@ -199,4 +206,4 @@ function decode(tokens) {
   return text;
 }
 
-export { encode, decode };
+export { decode, encode };

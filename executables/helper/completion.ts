@@ -1,8 +1,4 @@
-import {
-  OpenAIApi,
-  dataSchema,
-  streamBody,
-} from "../../packages/openai/mod.ts";
+import { OpenAIApi, dataSchema, streamBody } from "openai";
 
 export async function generateCompletion(openai: OpenAIApi, message: string) {
   console.log("Sending message:", message);
