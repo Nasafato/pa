@@ -8,9 +8,9 @@ import { readUrltoText } from "../../utils/mod.ts";
 import { readableStreamFromIterable } from "../deps.ts";
 import { dataSchema } from "../mod.ts";
 
-const fullFixture = await readUrltoText(
-  new URL("./__tests__/fullCompletion.txt", import.meta.url)
-);
+const completionTxtUrl = new URL("./fullCompletion.txt", import.meta.url);
+console.log(completionTxtUrl);
+const fullFixture = await readUrltoText(completionTxtUrl);
 // const __dirname = new URL(".", import.meta.url).pathname;
 // const fullFixture = await Deno.readTextFile(`${__dirname}/fullCompletion.txt`);
 
