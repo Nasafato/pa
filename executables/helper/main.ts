@@ -1,12 +1,11 @@
 import { load } from "dotenv";
-import { Configuration, OpenAIApi, encode } from "openai";
+import { Configuration, OpenAIApi } from "openai";
 import { generateCompletion } from "./completion.ts";
 
 await load({
   export: true,
 });
 
-const __dirname = new URL(".", import.meta.url).pathname;
 const configuration = new Configuration({
   apiKey: Deno.env.get("OPENAI_API_KEY") || "",
 });

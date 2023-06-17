@@ -1,11 +1,10 @@
-import { assertEquals } from "https://deno.land/std@0.191.0/testing/asserts.ts";
-import { z } from "https://deno.land/x/zod@v3.21.4/mod.ts";
 import {
   consumeNewlines,
   consumeEvents,
   EventInfo,
   parseEvent,
 } from "./helpers.ts";
+import { assertEquals } from "./deps.ts";
 
 enum ReadyState {
   CONNECTING = 0,
@@ -108,7 +107,7 @@ export class EventSource extends EventTarget {
     const { name, data } = parsedEvent;
     let event;
     if (name === "message" || (name !== "error" && name !== "open")) {
-      event = new MessageEvent(name, { data: data.join("\n") });
+      event = new MessageEvent(name, { data });
     } else {
       event = new Event(name);
     }
@@ -141,13 +140,6 @@ export class EventSource extends EventTarget {
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#event_stream_format
-const customEventSchema = z.object({
-  event: z.literal("custom"),
-  data: z.string(),
-  id: z.string().optional(),
-  retry: z.number().optional(),
-});
-
 Deno.test("Event parsing", async (t) => {
   const source = new EventSource("http://localhost:8000", { connect: false });
   let messageEvents: string[] = [];
