@@ -22,10 +22,10 @@ install_remote:
 	deno install $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) -r -n rh $(REMOTE_MAIN)
 
 run_remote:
-	deno run $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) $(REMOTE_MAIN)
+	deno run $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) $(REMOTE_MAIN) $(ARGS)
 
 run_remote_debug:
-	deno run --inspect-brk $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) $(REMOTE_MAIN)
+	deno run --inspect-brk $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) $(REMOTE_MAIN) $(ARGS)
 
 run_remote_recompile:
-	deno run $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) -r $(REMOTE_MAIN)
+	deno run $(PERMISSION_FLAGS) $(REMOTE_IMPORT_MAP) -r $(REMOTE_MAIN) $(ARGS)
